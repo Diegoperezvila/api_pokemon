@@ -1,10 +1,18 @@
 const express = require("express");
+const cors = require("cors");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const path = require("path");
 
 const app = express();
 const PORT = 3000;
+
+// Configuración de CORS
+app.use(cors({
+  origin: 'http://localhost',  // Permite solicitudes solo desde este origen (puedes agregar más orígenes si es necesario)
+  methods: ['GET', 'POST'],   // Métodos permitidos (ajústalo a lo que necesites)
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Encabezados permitidos
+}));
 
 // URLs de las páginas de scraping
 const URL_EVOLUCIONES_PRISMATICAS = "https://www.wikidex.net/wiki/Escarlata_y_P%C3%BArpura_(TCG):_Evoluciones_Prism%C3%A1ticas";
